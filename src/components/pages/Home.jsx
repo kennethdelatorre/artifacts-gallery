@@ -4,10 +4,10 @@ export default function Home() {
   return (
     <section className="home">
       <div className="hero">
-        <h1>Discover Timeless Artifacts</h1>
+        <h1>Discover Timeless Japanese Artifacts</h1>
         <p>
-          Explore a curated collection of sculptures, paintings, and historical
-          artifacts from around the world.
+          Explore a curated collection of Japanese sculptures, paintings,
+          ceramics, and samurai arms.
         </p>
         <div className="hero-actions">
           <Link to="/gallery" className="btn btn-primary">
@@ -20,12 +20,12 @@ export default function Home() {
       </div>
       <div className="home-features">
         <div className="feature-card">
-          <h3>Curated Collections</h3>
-          <p>Hand-picked pieces spanning centuries of human history.</p>
+          <h3>Curated Japanese Collections</h3>
+          <p>Hand-picked pieces spanning centuries of Japanese history.</p>
         </div>
         <div className="feature-card">
-          <h3>Detailed Stories</h3>
-          <p>Every artifact tells the story of its era and culture.</p>
+          <h3>Stories of Feudal Japan</h3>
+          <p>Every artifact tells the story of its era, craft, and culture.</p>
         </div>
         <div className="feature-card">
           <h3>For Collectors and Curators</h3>

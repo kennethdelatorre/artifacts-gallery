@@ -51,8 +51,8 @@ a {
   z-index: 50;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  justify-content: center;
+  gap: 24px;
   flex-wrap: wrap;
   padding: 16px 24px;
   background: rgba(0, 0, 0, 0.85);
@@ -74,8 +74,12 @@ a {
 }
 
 .nav-link {
-  padding: 8px 14px;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
   font-size: 0.95rem;
   color: var(--muted);
   transition: color 0.2s, background 0.2s;
@@ -83,6 +87,11 @@ a {
   border: none;
   cursor: pointer;
   font-family: inherit;
+}
+
+.nav-link svg {
+  width: 20px;
+  height: 20px;
 }
 
 .nav-link:hover {
@@ -116,11 +125,15 @@ a {
 
 /* Home */
 .home {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  text-align: left;
+  padding: 48px 0;
 }
 
 .hero {
-  padding: 40px 0 32px;
   background: radial-gradient(
     ellipse at top,
     rgba(255, 255, 255, 0.06),
@@ -137,29 +150,43 @@ a {
   font-size: 1.1rem;
   color: var(--muted);
   max-width: 560px;
-  margin: 0 auto 24px;
+  margin: 0 0 24px;
 }
 
 .hero-actions {
   display: flex;
   gap: 12px;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
 .home-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr;
   gap: 16px;
-  margin-top: 40px;
+  counter-reset: feature;
 }
 
 .feature-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  
-  padding: 24px;
   text-align: left;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.feature-card:last-child {
+  border-bottom: none;
+}
+
+.feature-card::before {
+  counter-increment: feature;
+  content: "0" counter(feature);
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
 
 .feature-card h3 {
@@ -170,6 +197,14 @@ a {
 .feature-card p {
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+@media (max-width: 850px) {
+  .home {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 24px 0;
+  }
 }
 
 /* Buttons */

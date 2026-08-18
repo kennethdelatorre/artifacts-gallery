@@ -6,7 +6,7 @@ export default function Gallery() {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState('')
 
-  const categories = ['Sculpture', 'Painting', 'Artifact']
+  const categories = [...new Set(artifacts.map((artifact) => artifact.category))]
 
   const filtered = artifacts.filter((artifact) => {
     const matchesSearch = artifact.title
@@ -18,9 +18,9 @@ export default function Gallery() {
 
   return (
     <section className="gallery">
-      <h1>Artifact Gallery</h1>
+      <h1>Japan Artifact Gallery</h1>
       <p className="gallery-subtitle">
-        Explore our collection of historical artifacts.
+        Explore our collection of Japanese artifacts.
       </p>
 
       <div className="gallery-controls">
