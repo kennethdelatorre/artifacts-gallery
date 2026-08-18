@@ -52,6 +52,11 @@ export default function Login() {
 
   return (
     <section className="auth-page">
+      <img
+        src="/images/sapporo.jpg"
+        alt="Sapporo TV Tower and Odori Park"
+        className="auth-image"
+      />
       <form className="auth-form" onSubmit={handleSubmit} noValidate>
         <h1>Welcome Back</h1>
         <p className="auth-subtitle">Log in to explore the gallery</p>

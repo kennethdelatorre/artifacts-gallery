@@ -127,7 +127,7 @@ a {
 .home {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: start;
   gap: 48px;
   text-align: left;
   padding: 48px 0;
@@ -199,11 +199,89 @@ a {
   font-size: 0.95rem;
 }
 
+.home-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 60px rgba(161, 161, 170, 0.25);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.feature-card:nth-child(1) {
+  animation: fadeUp 0.6s ease-out 0.15s both;
+}
+
+.feature-card:nth-child(2) {
+  animation: fadeUp 0.6s ease-out 0.3s both;
+}
+
+.feature-card:nth-child(3) {
+  animation: fadeUp 0.6s ease-out 0.45s both;
+}
+
+.home-image {
+  animation: fadeUp 0.6s ease-out 0.6s both;
+}
+
+.auth-image {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+.auth-form {
+  animation: fadeUp 0.6s ease-out 0.15s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .feature-card,
+  .home-image,
+  .auth-image,
+  .auth-form,
+  .artifact-card {
+    animation: none;
+  }
+
+  .card-inner {
+    transition: none;
+  }
+}
+
 @media (max-width: 850px) {
   .home {
     grid-template-columns: 1fr;
     gap: 32px;
     padding: 24px 0;
+  }
+
+  .home-image {
+    height: 220px;
+  }
+
+  .auth-page {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 0;
+  }
+
+  .auth-image {
+    height: 200px;
   }
 }
 
@@ -251,9 +329,22 @@ a {
 
 /* Auth pages */
 .auth-page {
-  display: flex;
-  justify-content: center;
-  padding: 32px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 0;
+}
+
+.auth-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--border);
+  box-shadow:
+    0 0 80px rgba(161, 161, 170, 0.45),
+    0 0 20px rgba(161, 161, 170, 0.3);
 }
 
 .auth-form {
@@ -429,6 +520,7 @@ a {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  perspective: 1200px;
 }
 
 @media (min-width: 600px) {
@@ -449,11 +541,23 @@ a {
   }
 }
 
+@keyframes flipIn {
+  from {
+    opacity: 0;
+    transform: rotateY(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0);
+  }
+}
+
 .artifact-card {
   background: var(--surface);
   border: 1px solid var(--border);
   
-  overflow: hidden;
+  perspective: 1200px;
+  animation: flipIn 0.6s ease-out backwards;
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -461,6 +565,37 @@ a {
   transform: translateY(-4px);
   border-color: var(--accent);
   box-shadow: var(--shadow);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.artifact-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  background: var(--surface);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: left;
 }
 
 .artifact-image {

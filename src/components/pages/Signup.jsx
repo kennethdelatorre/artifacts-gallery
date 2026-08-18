@@ -202,6 +202,11 @@ export default function Signup() {
           Already have an account? <Link to="/login">Log in</Link>
         </p>
       </form>
+      <img
+        src="/images/tokyo.jpg"
+        alt="Tokyo skyline at sunset"
+        className="auth-image"
+      />
     </section>
   )
 }

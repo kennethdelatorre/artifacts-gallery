@@ -17,6 +17,11 @@ export default function Home() {
             Get Started
           </Link>
         </div>
+        <img
+          src="/images/kyoto.jpg"
+          alt="Panoramic view of Kiyomizu-dera Temple in Kyoto"
+          className="home-image"
+        />
       </div>
       <div className="home-features">
         <div className="feature-card">

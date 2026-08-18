@@ -49,25 +49,33 @@ export default function Gallery() {
         <p className="no-results">No artifacts match your search.</p>
       ) : (
         <div className="artifact-grid">
-          {filtered.map((artifact) => (
+          {filtered.map((artifact, index) => (
             <Link
               to={`/artifacts/${artifact.id}`}
               key={artifact.id}
               className="artifact-card"
+              style={{ animationDelay: `${index * 0.08}s` }}
             >
-              <img
-                src={artifact.image}
-                alt={artifact.title}
-                className="artifact-image"
-              />
-              <div className="artifact-info">
-                <h3 className="artifact-title">{artifact.title}</h3>
-                <p className="artifact-meta">
-                  <span className="artifact-category">
-                    {artifact.category}
-                  </span>
-                  <span className="artifact-year">{artifact.year}</span>
-                </p>
+              <div className="card-inner">
+                <div className="card-front">
+                  <img
+                    src={artifact.image}
+                    alt={artifact.title}
+                    className="artifact-image"
+                  />
+                  <div className="artifact-info">
+                    <h3 className="artifact-title">{artifact.title}</h3>
+                    <p className="artifact-meta">
+                      <span className="artifact-category">
+                        {artifact.category}
+                      </span>
+                      <span className="artifact-year">{artifact.year}</span>
+                    </p>
+                  </div>
+                </div>
+                <div className="card-back">
+                  <p>{artifact.description}</p>
+                </div>
               </div>
             </Link>
           ))}
